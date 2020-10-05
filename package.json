@@ -1,0 +1,29 @@
+{
+  "name": "gilboto",
+  "version": "1.0.0",
+  "description": "gilbert's discord bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/giilbert/gilboto.git"
+  },
+  "keywords": [
+    "discord",
+    "bot",
+    "moderation"
+  ],
+  "author": "giilbert",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/giilbert/gilboto/issues"
+  },
+  "homepage": "https://github.com/giilbert/gilboto#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "discord.js": "^12.3.1",
+    "dotenv": "^8.2.0"
+  }
+}
