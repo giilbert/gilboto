@@ -8,6 +8,7 @@ colors.setTheme({
     error: "red"
 })
 
+let Config = JSON.parse(require("fs").readFileSync(require("path").join(__dirname, "config.json")));
 
 
 let client = new Discord.Client();
@@ -18,6 +19,13 @@ client.on("message", (m) => {
 
 client.on("ready", () => {
     console.log(`INFO | gilboto is ready with ${client.user.tag}`.info);
+    client.user.setActivity(Config.presence.activity, { type: Config.presence.type });
 })
 
 client.login(process.env.token);
+
+
+
+process.on("uncaughtException", (e) => {
+    console.log(`ERROR | ${e.name}:\n${e.message}\n------------------`.error)
+})

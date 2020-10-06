@@ -3,5 +3,10 @@
     
     "theme": {
         "mainColor": "#FF0000"
+    },
+
+    "presence": {
+        "type": "WATCHING",
+        "activity": "the server"
     }
 }
