@@ -10,7 +10,7 @@ colors.setTheme({
 
 let Config = JSON.parse(require("fs").readFileSync(require("path").join(__dirname, "config.json")));
 const CommandRunner = require("./commands/execute.js");
-
+require("./commands/registerCommands").all();
 
 let client = new Discord.Client();
 
