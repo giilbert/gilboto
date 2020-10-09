@@ -6,15 +6,25 @@ colors.setTheme({
     info: "white",
     warn: "yellow",
     error: "red"
-})
+});
 
 let Config = JSON.parse(require("fs").readFileSync(require("path").join(__dirname, "config.json")));
+const CommandRunner = require("./commands/execute.js");
 
 
 let client = new Discord.Client();
 
-client.on("message", (m) => {
-    require("./commands/execute.js").execute(m, client);
+
+client.on("message", (msg) => {
+
+    if (!msg.guild) {
+        msg.channel.send("gilboto commands are only available in servers, not in DM channels")
+        return;
+    }
+
+    if (!msg.content.startsWith(Config.prefix)) return;
+
+    CommandRunner.run(msg, client);
 })
 
 client.on("ready", () => {
@@ -27,5 +37,5 @@ client.login(process.env.token);
 
 
 process.on("uncaughtException", (e) => {
-    console.log(`ERROR | ${e.name}:\n${e.message}\n------------------`.error)
+    console.log(`ERROR |\n${e.stack}\n------------------`.error);
 })
