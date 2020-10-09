@@ -17,7 +17,15 @@ let command = (msg, client) => {
         msg.reply("\nplease mention(@) a person you want to kick")
         return;
     }
-    mention.kick();
+
+    mention.kick()
+        .then(() => {
+            msg.react("👍");
+            console.log(`INFO | ${msg.author.tag} has kicked ${mention.user.tag}`)
+        })
+        .catch(() => {
+            msg.react("❌")
+        })
 }
 
 
