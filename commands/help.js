@@ -11,6 +11,7 @@ let command = (msg, client) => {
         let embed = new Discord.MessageEmbed()
             .setTitle("**gilboto help :turtle:**")
             .setColor(Config.theme.mainColor)
+            .setDescription("**the prefix is: ``gb``**")
             .addField("**:tools: Utility**", `
             help, ping,\ninfo, serverinfo
             `, true)

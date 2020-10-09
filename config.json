@@ -6,7 +6,7 @@
     },
 
     "presence": {
-        "type": "WATCHING",
-        "activity": "the server"
+        "type": "STREAMING",
+        "activity": "gb help"
     }
 }
