@@ -5,10 +5,18 @@ let Config = JSON.parse(require("fs").readFileSync(require("path").join(__dirnam
 
 
 let command = (msg, client) => {
+
+    if (!msg.member.hasPermission("KICK_MEMBERS")) {
+        msg.reply("\nou need to have ``Kick Members`` permission to use this command")
+        return;
+    }
+    
     let mention = msg.mentions.members.first();
 
-    if (!mention) msg.reply("\nplease mention(@) a person you want to kick")
-
+    if (!mention) {
+        msg.reply("\nplease mention(@) a person you want to kick")
+        return;
+    }
     mention.kick();
 }
 

@@ -22,7 +22,7 @@ client.on("message", (msg) => {
         return;
     }
 
-    if (!msg.content.startsWith(Config.prefix)) return;
+    if (!msg.content.toLowerCase().startsWith(Config.prefix)) return;
 
     CommandRunner.run(msg, client);
 })
