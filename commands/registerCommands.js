@@ -3,4 +3,7 @@ exports.all = () => {
     require("./help").register();
     require("./invite").register();
     
+    require("./moderation/kick").register();
+    require("./moderation/ban").register();
+    require("./moderation/mute").register();
 }

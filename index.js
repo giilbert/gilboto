@@ -43,7 +43,7 @@ client.on("guildCreate", guild => {
 })
 
 client.on("ready", () => {
-    console.log(`INFO | gilboto is ready with ${client.user.tag}`.info);
+    console.log(`INFO | gilboto is ready with tag ${client.user.tag}`.info);
     client.user.setActivity(Config.presence.activity, { type: Config.presence.type });
 })
 
