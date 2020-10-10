@@ -50,7 +50,7 @@ let help = (msg) => {
         `)
         .addField("**Author Permissions**", "``Kick Members``")
         .addField("**Bot Permissions**", `
-        \`\`sendMessages\`\`,\`\`reactMessages\`\`,\`\`kickMembers\`\`
+        \`\`sendMessages\`\`,\`\`addReactions\`\`,\`\`kickMembers\`\`
         `)
 
     msg.channel.send(embed)

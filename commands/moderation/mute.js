@@ -13,11 +13,10 @@ function setup(guild, msg) {
         reason: "for gb mute",
     })
         .then(r => {
-            muteRole = r;
-            msg.reply("set up!")
+            msg.react("👍");
         })
         .catch(e => {
-            msg.reply("error setting up mute :(")
+            msg.react("❌");
         })
 
 }
@@ -27,10 +26,37 @@ let command = (msg, client) => {
 
     if (!muteRole) setup(msg.guild, msg);
 
-    msg.reply("end")
+    muteRole = msg.guild.roles.cache.find(r => r.name === "gilboto-mute")
+    console.log(muteRole)
+
+    let mention = msg.mentions.members.first()
+    mention.roles.add(muteRole)
+        .then(() => {
+            msg.react("👍");
+            console.log(`INFO | ${msg.author.tag} has muted ${mention.user.tag}`)
+        })
+        .catch((e) => {
+            msg.react("❌")
+            console.error(e)
+        })
+    
+    
 }
 
 let help = (msg) => {
+    let embed = new Discord.MessageEmbed()
+        .setTitle("**gilboto help: mute**")
+        .setColor(Config.theme.mainColor)
+        .setDescription(`
+        a moderation command to mute people
+        `)
+        .addField("**Syntax**", `
+        - **mute** <mention>
+        `)
+        .addField("**Author Permissions**", "``Manage Roles``")
+        .addField("**Bot Permissions**", `
+        \`\`sendMessages\`\`,\`\`addReactions\`\`,\`\`manageRoles\`\`
+        `)
 
 }
 
