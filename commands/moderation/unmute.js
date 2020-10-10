@@ -14,7 +14,7 @@ let command = (msg, client) => {
     console.log(muteRole)
 
     let mention = msg.mentions.members.first()
-    mention.roles.add(muteRole)
+    mention.roles.remove(muteRole)
         .then(() => {
             msg.react("👍");
             console.log(`INFO | ${msg.author.tag} has muted ${mention.user.tag}`)
@@ -23,19 +23,19 @@ let command = (msg, client) => {
             msg.react("❌")
             console.error(e)
         })
-    
-    
+
+
 }
 
 let help = (msg) => {
     let embed = new Discord.MessageEmbed()
-        .setTitle("**gilboto help: mute**")
+        .setTitle("**gilboto help: unmute**")
         .setColor(Config.theme.mainColor)
         .setDescription(`
-        a moderation command to mute people
+        a moderation command to unmute people
         `)
         .addField("**Syntax**", `
-        - **mute** <mention>
+        - **unmute** <mention>
         `)
         .addField("**Author Permissions**", "``Manage Roles``")
         .addField("**Bot Permissions**", `
@@ -45,6 +45,6 @@ let help = (msg) => {
 }
 
 exports.register = () => {
-    require("../execute").registerCommand("mute", command)
-    require("../help").registerHelp("mute", help)
+    require("../execute").registerCommand("unmute", command)
+    require("../help").registerHelp("unmute", help)
 }

@@ -6,4 +6,5 @@ exports.all = () => {
     require("./moderation/kick").register();
     require("./moderation/ban").register();
     require("./moderation/mute").register();
+    require("./moderation/unmute").register();
 }
