@@ -18,7 +18,16 @@ let command = (msg, client) => {
         return;
     }
 
-    mention.kick()
+    let args = msg.content.split(" ");
+    args.shift();
+    args.shift();
+    args.shift();
+
+    let reason = args.join(" ");
+
+    if (!reason) reason = "Reason unspecified";
+
+    mention.kick(reason)
         .then(() => {
             msg.react("👍");
             console.log(`INFO | ${msg.author.tag} has kicked ${mention.user.tag}`)
