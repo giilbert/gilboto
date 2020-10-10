@@ -1,6 +1,6 @@
 <div align="center">
     <h1>gilboto</h1>
-    
+    <br />
     <p>Gilbert's discord bot for utility, entertainment, moderation, and more!</p>
 </div>
 
