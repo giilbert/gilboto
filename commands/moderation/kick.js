@@ -29,6 +29,25 @@ let command = (msg, client) => {
 }
 
 
+let help = (msg) => {
+    let embed = new Discord.MessageEmbed()
+        .setTitle("**gilboto help: ping**")
+        .setColor(Config.theme.mainColor)
+        .setDescription(`
+        a moderation command to kick people
+        `)
+        .addField("**Syntax**", `
+        - **kick** <mention> [reason]
+        `)
+        .addField("**Author Permissions**", "``Kick Members``")
+        .addField("**Bot Permissions**", `
+        \`\`sendMessages\`\`,\`\`reactMessages\`\`,\`\`kickMembers\`\`
+        `)
+
+    msg.channel.send(embed)
+}
+
 exports.register = () => {
     require("../execute").registerCommand("kick", command)
+    require("../help").registerHelp("kick", help)
 }
