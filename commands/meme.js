@@ -10,7 +10,7 @@ let command = (msg, client) => {
 }
 
 let help = (msg) => {
-
+    
 }
 
 exports.register = () => {
