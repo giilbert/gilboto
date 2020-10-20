@@ -59,6 +59,6 @@ app.get("/", (req, res) => {
     res.send("gilboto is ready");
 })
 
-app.listening("3000", () => {
+app.listen("3000", () => {
     console.log("gilboto is listening on *3000")
 })
