@@ -40,7 +40,7 @@ let command = (msg, client) => {
 
 let help = (msg) => {
     let embed = new Discord.MessageEmbed()
-        .setTitle("**gilboto help: ping**")
+        .setTitle("**gilboto help: kick**")
         .setColor(Config.theme.mainColor)
         .setDescription(`
         a moderation command to kick people
