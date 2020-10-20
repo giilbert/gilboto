@@ -27,7 +27,19 @@ let command = (msg, client) => {
 }
 
 let help = (msg) => {
-
+    let embed = new Discord.MessageEmbed()
+        .setTitle("**gilboto help: info**")
+        .setColor(Config.theme.mainColor)
+        .setDescription(`
+        a utiity command to fetch info about a guildmember
+        `)
+        .addField("**Syntax**", `
+        - **info** <mention>
+        `)
+        .addField("**Author Permissions**", "*everyone*")
+        .addField("**Bot Permissions**", `
+        \`\`sendMessages\`\`
+        `)
 }
 
 exports.register = () => {
