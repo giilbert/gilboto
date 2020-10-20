@@ -27,7 +27,7 @@ let command = (msg, client) => {
             `, true)
 
             .addField("**:orange_square: Misc**", `
-            snipe, invite
+            snipe, invite, spam
             `, true)
 
             .setFooter("protip: use gb help [command name] to see additional info")

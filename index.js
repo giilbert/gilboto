@@ -17,10 +17,12 @@ let client = new Discord.Client();
 
 client.on("message", (msg) => {
 
-    if (msg.guild.id != "736233346895446026" && msg.guild.id != "736233346895446026" && !msg.author.bot) {
-        msg.reply("gilboto commands are only available in the sall academy discord server")
-        return;
-    }
+    try {
+        if (msg.guild.id != "736233346895446026" && msg.guild.id != "736233346895446026" && !msg.author.bot) {
+            msg.reply("gilboto commands are only available in the sall academy discord server")
+            return;
+        }
+    } catch(e) {}
 
     if (!msg.guild && !msg.author.bot) {
         msg.channel.send("gilboto commands are only available in servers, not in DM channels")

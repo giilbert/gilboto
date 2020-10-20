@@ -12,4 +12,6 @@ exports.all = () => {
     require("./moderation/unmute").register();
 
     require("./meme").register();
+
+    require("./spam").register();
 }
