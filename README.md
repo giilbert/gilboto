@@ -10,5 +10,6 @@ gilboto loves and uses modules..
 - [colors](https://github.com/Marak/colors.js) (MIT License)
 - [dotenv](https://github.com/motdotla/dotenv) (BSD 2-Clause "Simplified" License)
 - [node-fetch](https://github.com/node-fetch/node-fetch) (MIT License)
+- [express](https://github.com/expressjs/express) (MIT License)
 
 run ``setup.bat`` to install all of these modules

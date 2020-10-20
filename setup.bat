@@ -1,1 +1,1 @@
-npm i discord.js dotenv colors node-fetch
+npm i discord.js dotenv colors node-fetch express
