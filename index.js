@@ -48,3 +48,17 @@ client.login(process.env.token);
 process.on("uncaughtException", (e) => {
     console.log(`ERROR |\n${e.stack}\n------------------`.error);
 })
+
+
+
+
+const express = require("express");
+let app = express();
+
+app.get("/", (req, res) => {
+    res.send("gilboto is ready");
+})
+
+app.listening("3000", () => {
+    console.log("gilboto is listening on *3000")
+})
