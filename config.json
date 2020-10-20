@@ -8,5 +8,7 @@
     "presence": {
         "type": "STREAMING",
         "activity": "gb help"
-    }
+    },
+
+    "maxSpamSize": 10
 }

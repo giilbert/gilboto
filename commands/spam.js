@@ -15,6 +15,12 @@ let command = (msg, client) => {
     let args = msg.content.split(" ");
     
     let amount = args[3];
+
+    if (amount > Config.maxSpamSize) {
+        msg.reply("cannot spam more than " + Config.maxSpamSize + " times")
+        return;
+    }
+
     args.shift();args.shift();args.shift();args.shift();
     let message = args.join(" ")
     
