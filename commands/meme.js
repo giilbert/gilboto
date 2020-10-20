@@ -34,7 +34,19 @@ let command = (msg, client) => {
 }
 
 let help = (msg) => {
-
+    let embed = new Discord.MessageEmbed()
+        .setTitle("**gilboto help: meme**")
+        .setColor(Config.theme.mainColor)
+        .setDescription(`
+        a entertainment command to fetch a meme from r/meme
+        `)
+        .addField("**Syntax**", `
+        - **meme**
+        `)
+        .addField("**Author Permissions**", "*everyone*")
+        .addField("**Bot Permissions**", `
+        \`\`sendMessages\`\`
+        `)
 }
 
 exports.register = () => {
