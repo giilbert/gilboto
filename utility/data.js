@@ -9,18 +9,20 @@ let setup = () => {
     violations = JSON.parse(
         fs.readFileSync(path.join(__dirname, "../data/violations.json"))
     )
-
-    //addViolation({
-    //    "tag": "asdad#1111",
-    //    "userid": "934562",
-    //    "reason": "being good",
-    //    "moderator": "sald#1111"
-    //})
-
-    removeViolation({
-        "userid": "1240400102",
-        "id": "0"
+    
+    /*
+    addViolation({
+        "usertag": "asdad#1111",
+        "userid": "934562",
+        "reason": "being good",
+        "moderator": "sald#1111"
     })
+    */
+
+    //removeViolation({
+    //    "userid": "1240400102",
+    //    "id": "0"
+    //})
 }
 
 let save = () => {
@@ -33,6 +35,7 @@ let save = () => {
 
 // object {
 //  userid,
+//  usertag,
 //  reason,
 //  moderator (tag)
 // }
@@ -45,12 +48,15 @@ let addViolation = (object) => {
         userViolations = violations[object.userid];
     }
 
+    
     userViolations.push({
         "id": violations.currentID,
+        "tag": object.usertag,
         "timestamp": Date.now(),
         "reason": object.reason,
         "moderator": object.moderator
     })
+    
 
     violations.currentID++;
 
@@ -80,7 +86,7 @@ let removeViolation = (object) => {
     save();
 }
 
-let getUserViolations = () => {
+let getUserViolations = (object) => {
     let userViolations = violations[object.userid];
 
     if (!userViolations) {
@@ -90,4 +96,4 @@ let getUserViolations = () => {
     return userViolations;
 }
 
-module.exports = { setup, removeViolation, addViolation}
+module.exports = { setup, removeViolation, addViolation, getUserViolations }
