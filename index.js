@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 const colors = require("colors");
 require("dotenv").config();
+require("./utility/data").setup();
 
 colors.setTheme({
     info: "white",
@@ -24,12 +25,12 @@ client.on("message", (msg) => {
         }
     } catch(e) {}
 
+    if (!msg.content.toLowerCase().startsWith(Config.prefix)) return;
+
     if (!msg.guild && !msg.author.bot) {
         msg.channel.send("gilboto commands are only available in servers, not in DM channels")
         return;
     }
-
-    if (!msg.content.toLowerCase().startsWith(Config.prefix)) return;
 
     CommandRunner.run(msg, client);
 })

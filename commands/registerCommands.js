@@ -10,6 +10,7 @@ exports.all = () => {
     require("./moderation/ban").register();
     require("./moderation/mute").register();
     require("./moderation/unmute").register();
+    require("./moderation/violation").register();
 
     require("./meme").register();
 
