@@ -33,7 +33,10 @@ let list = (msg) => {
 
 let add = (msg) => {
 
-    console.log(msg.mentions.users.first().id)
+    if (!msg.member.permissions.has("ADMINISTRATOR")) {
+        msg.reply("no permissions get rekt lol");
+        return;
+    }
 
     let args = msg.content.split(" ");
 
@@ -53,6 +56,11 @@ let add = (msg) => {
 }
 
 let remove = (msg) => {
+
+    if (!msg.member.permissions.has("ADMINISTRATOR")) {
+        msg.reply("no permissions get rekt lol");
+        return;
+    }
 
     let args = msg.content.split(" ");
 
@@ -84,7 +92,65 @@ let command = (msg, client) => {
 }
 
 let help = (msg) => {
+    let embedMain = new Discord.MessageEmbed()
+        .setTitle("**gilboto help: violation**")
+        .setColor(Config.theme.mainColor)
+        .setDescription(`
+        a moderation command to add/delete/list violations of people
+        `)
+        .addField("**Syntax**", `
+        *See below*
+        `)
+        .addField("**Author Permissions**", "*see below*")
+        .addField("**Bot Permissions**", `
+        \`\`sendMessages\`\`,\`\`embedLinks\`\`
+        `)
+    msg.channel.send(embedMain);
 
+    let embedAdd = new Discord.MessageEmbed()
+        .setTitle("**gilboto help: violation add**")
+        .setColor(Config.theme.mainColor)
+        .setDescription(`
+        a moderation command to add violations to people
+        `)
+        .addField("**Syntax**", `
+        - **violation** add @<member> [reason]
+        `)
+        .addField("**Author Permissions**", "``Administrator``")
+        .addField("**Bot Permissions**", `
+        \`\`sendMessages\`\`,\`\`embedLinks\`\`
+        `)
+    msg.channel.send(embedAdd);
+
+    let embedRemove = new Discord.MessageEmbed()
+        .setTitle("**gilboto help: violation remove**")
+        .setColor(Config.theme.mainColor)
+        .setDescription(`
+        a moderation command to add violations to people
+        `)
+        .addField("**Syntax**", `
+        - **violation** remove @<member> <id>
+        `)
+        .addField("**Author Permissions**", "``Administrator``")
+        .addField("**Bot Permissions**", `
+        \`\`sendMessages\`\`,\`\`embedLinks\`\`
+        `)
+    msg.channel.send(embedRemove);
+
+    let embedList = new Discord.MessageEmbed()
+        .setTitle("**gilboto help: violation list**")
+        .setColor(Config.theme.mainColor)
+        .setDescription(`
+        a moderation command to list violations of people
+        `)
+        .addField("**Syntax**", `
+        - **violation** list @<member> 
+        `)
+        .addField("**Author Permissions**", "*everyone*")
+        .addField("**Bot Permissions**", `
+        \`\`sendMessages\`\`,\`\`embedLinks\`\`
+        `)
+    msg.channel.send(embedList);
 }
 
 exports.register = () => {
