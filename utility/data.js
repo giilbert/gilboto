@@ -81,8 +81,6 @@ let removeViolation = (object) => {
         }
     })
 
-    violations.currentID--;
-
     save();
 }
 

@@ -15,27 +15,37 @@ let list = (msg) => {
         return
     }
 
-    let msgGen = msg.mentions.users.first().tag + "'s " + "**Violations**"
+    
     violations.forEach(v => {
-        msgGen += `
-        **ID** ${v.id}
-        **Moderator** ${v.moderator}
-        **Time** ${new Date(v.timestamp)}
-        **Reason** ${v.reason}
-        `
+        let embed = new Discord.MessageEmbed()
+            .setTitle(msg.mentions.users.first().tag + "'s " + "**Violations** | " + "**ID** " + v.id)
+            .setColor(Config.theme.mainColor)
+            .addField("**Moderator**", v.moderator)
+            .addField("**Time**", new Date(v.timestamp))
+            .addField("**Reason**", v.reason)
+        
+        msg.channel.send(embed)
     })
 
-    msg.channel.send(msgGen)
+    msg.channel.send("**Total**: " + violations.length)
+
 }
 
 let add = (msg) => {
 
     console.log(msg.mentions.users.first().id)
 
+    let args = msg.content.split(" ");
+
+    args.splice(0, 4);
+
+    let reason = args.join(" ")
+
+    msg.reply("reason: " + reason)
     Data.addViolation({
         "userid": msg.mentions.users.first().id,
         "usertag": msg.mentions.users.first().tag,
-        "reason": "WORK IN PROGRESS",
+        "reason": reason,
         "moderator": msg.author.tag
     })
 
