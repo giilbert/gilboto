@@ -16,6 +16,11 @@ let command = (msg, client) => {
         return;
     }
 
+    if (!msg.member.hasPermission("MANAGE_ROLES")) {
+        msg.reply("no permssions get rekt lol");
+        return;
+    }
+
     mention.roles.add(muteRole)
         .then(() => {
             msg.react("👍");
@@ -44,6 +49,7 @@ let help = (msg) => {
         \`\`sendMessages\`\`,\`\`addReactions\`\`,\`\`manageRoles\`\`
         `)
 
+        msg.channel.send(embed)
 }
 
 exports.register = () => {

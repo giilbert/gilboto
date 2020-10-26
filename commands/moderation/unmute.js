@@ -15,6 +15,11 @@ let command = (msg, client) => {
         return;
     }
 
+    if (!msg.member.hasPermission("MANAGE_ROLES")) {
+        msg.reply("no permssions get rekt lol");
+        return;
+    }
+
     mention.roles.remove(muteRole)
         .then(() => {
             msg.react("👍");
@@ -33,7 +38,7 @@ let help = (msg) => {
         .setTitle("**gilboto help: unmute**")
         .setColor(Config.theme.mainColor)
         .setDescription(`
-        a moderation command to unmute people
+        literally the opposite of mute
         `)
         .addField("**Syntax**", `
         - **unmute** <mention>
@@ -43,6 +48,7 @@ let help = (msg) => {
         \`\`sendMessages\`\`,\`\`addReactions\`\`,\`\`manageRoles\`\`
         `)
 
+    msg.channel.send(embed)
 }
 
 exports.register = () => {
