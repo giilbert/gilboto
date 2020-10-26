@@ -1,4 +1,5 @@
 const Discord = require("discord.js");
+const { copyFile } = require("fs");
 
 let Config = JSON.parse(require("fs").readFileSync(require("path").join(__dirname, "../../config.json")));
 
@@ -6,14 +7,10 @@ let Config = JSON.parse(require("fs").readFileSync(require("path").join(__dirnam
 
 
 let command = (msg, client) => {
-    let muteRole = msg.guild.roles.cache.some(r => r.name === "mute")
-
-    if (!muteRole) setup(msg.guild, msg);
-
-    muteRole = msg.guild.roles.cache.find(r => r.name === "mute")
-    console.log(muteRole)
-
+    let muteRole = msg.guild.roles.cache.find(r => r.name === Config.commands.muteRoleName)
+    console.log(Config)
     let mention = msg.mentions.members.first()
+
     mention.roles.add(muteRole)
         .then(() => {
             msg.react("👍");

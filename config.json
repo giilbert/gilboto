@@ -11,6 +11,7 @@
     },
 
     "commands": {
-        "maxSpamSize": 20
+        "maxSpamSize": 20,
+        "muteRoleName": "mute"
     }
 }
