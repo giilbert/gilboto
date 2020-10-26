@@ -8,8 +8,13 @@ let Config = JSON.parse(require("fs").readFileSync(require("path").join(__dirnam
 
 let command = (msg, client) => {
     let muteRole = msg.guild.roles.cache.find(r => r.name === Config.commands.muteRoleName)
-    console.log(Config)
+    
     let mention = msg.mentions.members.first()
+
+    if (!mention) {
+        msg.reply("please mention someone to mute");
+        return;
+    }
 
     mention.roles.add(muteRole)
         .then(() => {

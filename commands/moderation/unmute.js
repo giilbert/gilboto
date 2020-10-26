@@ -10,6 +10,11 @@ let command = (msg, client) => {
 
     let mention = msg.mentions.members.first()
 
+    if (!mention) {
+        msg.reply("please mention someone to mute");
+        return;
+    }
+
     mention.roles.remove(muteRole)
         .then(() => {
             msg.react("👍");
