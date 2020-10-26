@@ -19,7 +19,7 @@ let command = (msg, client) => {
             `, true)
 
             .addField("**:shield: Moderation**", `
-            mute, kick, ban
+            mute, unmute, kick, ban
             `, true)
 
             .addField("**:video_game: Fun**", `
@@ -49,7 +49,7 @@ exports.register = () => {
 }
 
 exports.registerHelp = (name, callback) => {
-    console.log(`INFO | register help command ${name}`)
+    console.log(`INFO | register help command "${name}"`)
     helpCommands[name] = callback;
 }
 
