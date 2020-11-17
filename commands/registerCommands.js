@@ -5,7 +5,8 @@ exports.all = () => {
 
     require("./info").register();
     //require("./serverinfo").register(); todo
-    
+    require('./eval').register();
+
     require("./moderation/kick").register();
     require("./moderation/ban").register();
     require("./moderation/mute").register();
