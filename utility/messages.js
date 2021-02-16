@@ -17,7 +17,7 @@ setInterval(() => {
 }, 1e4);
 
 function getMessagesSent() {
-  return data.messagesSent;
+  return data.totalSent;
 }
 
 function addMessage(n) {

@@ -62,6 +62,11 @@ process.on('uncaughtException', (e) => {
 const express = require('express');
 const app = express();
 
+app.use(
+  require('cors')({
+    origin: '*',
+  })
+);
 app.use(api);
 
 app.get('/', (req, res) => {
