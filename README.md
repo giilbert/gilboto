@@ -5,15 +5,19 @@
 </div>
 
 ## Setup
-gilboto loves and uses modules.. 
+
+gilboto loves and uses modules..
+
 - [discord.js](https://github.com/discordjs/discord.js) (Apache-2.0 License)
 - [colors](https://github.com/Marak/colors.js) (MIT License)
 - [dotenv](https://github.com/motdotla/dotenv) (BSD 2-Clause "Simplified" License)
 - [node-fetch](https://github.com/node-fetch/node-fetch) (MIT License)
 - [express](https://github.com/expressjs/express) (MIT License)
 
-run ``setup.bat`` to install all of these modules
+run `npm install` to install all of these modules
 
 ### Data
+
 In the data folder, add:
+
 - violations.json

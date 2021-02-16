@@ -1,58 +1,63 @@
-const Discord = require("discord.js");
-const { copyFile } = require("fs");
+const Discord = require('discord.js');
 
-let Config = JSON.parse(require("fs").readFileSync(require("path").join(__dirname, "../../config.json")));
-
-
-
+let Config = require('../../config.json');
 
 let command = (msg, client) => {
-    let muteRole = msg.guild.roles.cache.find(r => r.name === Config.commands.muteRoleName)
-    
-    let mention = msg.mentions.members.first()
+  let muteRole = msg.guild.roles.cache.find(
+    (r) => r.name === Config.commands.muteRoleName
+  );
 
-    if (!mention) {
-        msg.reply("please mention someone to mute");
-        return;
-    }
+  let mention = msg.mentions.members.first();
 
-    if (!msg.member.hasPermission("MANAGE_ROLES")) {
-        msg.reply("no permssions get rekt lol");
-        return;
-    }
+  if (!mention) {
+    msg.reply('please mention someone to mute');
+    return;
+  }
 
-    mention.roles.add(muteRole)
-        .then(() => {
-            msg.react("👍");
-            console.log(`INFO | ${msg.author.tag} has muted ${mention.user.tag}`)
-        })
-        .catch((e) => {
-            msg.react("❌")
-            console.error(e)
-        })
-    
-    
-}
+  if (!msg.member.hasPermission('MANAGE_ROLES')) {
+    msg.reply('no permssions get rekt lol');
+    return;
+  }
+
+  mention.roles
+    .add(muteRole)
+    .then(() => {
+      msg.react('👍');
+      console.log(`INFO | ${msg.author.tag} has muted ${mention.user.tag}`);
+    })
+    .catch((e) => {
+      msg.react('❌');
+      console.error(e);
+    });
+};
 
 let help = (msg) => {
-    let embed = new Discord.MessageEmbed()
-        .setTitle("**gilboto help: mute**")
-        .setColor(Config.theme.mainColor)
-        .setDescription(`
+  let embed = new Discord.MessageEmbed()
+    .setTitle('**gilboto help: mute**')
+    .setColor(Config.theme.mainColor)
+    .setDescription(
+      `
         a moderation command to mute people
-        `)
-        .addField("**Syntax**", `
+        `
+    )
+    .addField(
+      '**Syntax**',
+      `
         - **mute** <mention>
-        `)
-        .addField("**Author Permissions**", "``Manage Roles``")
-        .addField("**Bot Permissions**", `
+        `
+    )
+    .addField('**Author Permissions**', '``Manage Roles``')
+    .addField(
+      '**Bot Permissions**',
+      `
         \`\`sendMessages\`\`,\`\`addReactions\`\`,\`\`manageRoles\`\`
-        `)
+        `
+    );
 
-        msg.channel.send(embed)
-}
+  msg.channel.send(embed);
+};
 
 exports.register = () => {
-    require("../execute").registerCommand("mute", command)
-    require("../help").registerHelp("mute", help)
-}
+  require('../execute').registerCommand('mute', command);
+  require('../help').registerHelp('mute', help);
+};

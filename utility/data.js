@@ -1,16 +1,14 @@
-const fs = require("fs");
-const path = require("path")
-
+const fs = require('fs');
+const path = require('path');
 
 let violations;
 
 let setup = () => {
+  violations = JSON.parse(
+    fs.readFileSync(path.join(__dirname, '../data/violations.json'))
+  );
 
-    violations = JSON.parse(
-        fs.readFileSync(path.join(__dirname, "../data/violations.json"))
-    )
-    
-    /*
+  /*
     addViolation({
         "usertag": "asdad#1111",
         "userid": "934562",
@@ -19,19 +17,18 @@ let setup = () => {
     })
     */
 
-    //removeViolation({
-    //    "userid": "1240400102",
-    //    "id": "0"
-    //})
-}
+  //removeViolation({
+  //    "userid": "1240400102",
+  //    "id": "0"
+  //})
+};
 
 let save = () => {
-    fs.writeFileSync(
-        path.join(__dirname, "../data/violations.json"),
-        JSON.stringify(violations)
-    )
-}
-
+  fs.writeFileSync(
+    path.join(__dirname, '../data/violations.json'),
+    JSON.stringify(violations)
+  );
+};
 
 // object {
 //  userid,
@@ -40,58 +37,55 @@ let save = () => {
 //  moderator (tag)
 // }
 let addViolation = (object) => {
-    let userViolations = violations[object.userid];
+  let userViolations = violations[object.userid];
 
-    if (!userViolations) {
-        violations[object.userid] = [];
+  if (!userViolations) {
+    violations[object.userid] = [];
 
-        userViolations = violations[object.userid];
-    }
+    userViolations = violations[object.userid];
+  }
 
-    
-    userViolations.push({
-        "id": violations.currentID,
-        "tag": object.usertag,
-        "timestamp": Date.now(),
-        "reason": object.reason,
-        "moderator": object.moderator
-    })
-    
+  userViolations.push({
+    id: violations.currentID,
+    tag: object.usertag,
+    timestamp: Date.now(),
+    reason: object.reason,
+    moderator: object.moderator,
+  });
 
-    violations.currentID++;
+  violations.currentID++;
 
-    save();
-}
-
+  save();
+};
 
 // object {
 //  userid
 //  id
 // }
 let removeViolation = (object) => {
-    let userViolations = violations[object.userid];
+  let userViolations = violations[object.userid];
 
-    if (!userViolations) {
-        return 0;
+  if (!userViolations) {
+    return 0;
+  }
+
+  userViolations.forEach((v, i) => {
+    if (v.id == object.id) {
+      userViolations.splice(i, 1);
     }
+  });
 
-    userViolations.forEach((v, i) => {
-        if (v.id == object.id) {
-            userViolations.splice(i, 1)
-        }
-    })
-
-    save();
-}
+  save();
+};
 
 let getUserViolations = (object) => {
-    let userViolations = violations[object.userid];
+  let userViolations = violations[object.userid];
 
-    if (!userViolations) {
-        return 0;
-    }
+  if (!userViolations) {
+    return 0;
+  }
 
-    return userViolations;
-}
+  return userViolations;
+};
 
-module.exports = { setup, removeViolation, addViolation, getUserViolations }
+module.exports = { setup, removeViolation, addViolation, getUserViolations };

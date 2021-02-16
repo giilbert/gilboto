@@ -1,19 +1,15 @@
 {
-    "prefix": "gb",
-    
-    "theme": {
-        "mainColor": "#F68E5F"
-    },
-
-    "presence": {
-        "type": "STREAMING",
-        "activity": "gb help"
-    },
-
-    "commands": {
-        "maxSpamSize": 20,
-        "muteRoleName": "mute",
-
-        "allowEvalCommand": true
-    }
+  "prefix": "gb",
+  "theme": {
+    "mainColor": "#F68E5F"
+  },
+  "presence": {
+    "type": "STREAMING",
+    "activity": "gb help"
+  },
+  "commands": {
+    "maxSpamSize": 20,
+    "muteRoleName": "mute",
+    "allowEvalCommand": true
+  }
 }
