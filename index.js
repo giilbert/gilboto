@@ -2,6 +2,8 @@ const Discord = require('discord.js');
 const colors = require('colors');
 require('dotenv').config();
 require('./utility/data').setup();
+const api = require('./utility/api');
+const messages = require('./utility/messages');
 
 colors.setTheme({
   info: 'white',
@@ -19,17 +21,18 @@ let client = new Discord.Client();
 
 client.on('message', (msg) => {
   try {
-    if (
-      msg.guild.id != '736233346895446026' &&
-      msg.guild.id != '736233346895446026' &&
-      !msg.author.bot
-    ) {
+    if (msg.guild.id != '736233346895446026' && !msg.author.bot) {
       msg.reply(
         'gilboto commands are only available in the sall academy discord server'
       );
       return;
     }
   } catch (e) {}
+
+  // only increment if coming from server
+  if (msg.guild.id === '736233346895446026') {
+    messages.addMessage(1);
+  }
 
   if (!msg.content.toLowerCase().startsWith(Config.prefix)) return;
 
@@ -57,7 +60,9 @@ process.on('uncaughtException', (e) => {
 });
 
 const express = require('express');
-let app = express();
+const app = express();
+
+app.use(api);
 
 app.get('/', (req, res) => {
   res.send('gilboto is ready');

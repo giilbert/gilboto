@@ -1,0 +1,6 @@
+{
+  "ignore": [
+    "./data",
+    "./node_modules"
+  ]
+}
